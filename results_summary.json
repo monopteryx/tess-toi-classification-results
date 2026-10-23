@@ -1,0 +1,385 @@
+{
+  "paper_title": "Classifying TESS Objects of Interest with ~650 Labels: Kepler-Pretrained CNN and AutoML Models Benchmarked against ExoMiner++",
+  "source": "Frozen final evaluation (2026-10-09) and report-only analysis (2026-10-10/11) of the Kepler-pretrained CNN + AutoML ensemble; NASA ExoMiner++ v2.2.0 benchmark run 2026-10-10/11.",
+  "data": {
+    "split": {
+      "train": {
+        "objects": 654,
+        "stars": 578,
+        "planets": 530,
+        "nonplanets": 124
+      },
+      "validation": {
+        "objects": 180,
+        "stars": 165,
+        "planets": 149,
+        "nonplanets": 31
+      },
+      "test": {
+        "objects": 183,
+        "stars": 173,
+        "planets": 149,
+        "nonplanets": 34
+      }
+    },
+    "tess_spoc_hosts": 1058,
+    "tess_labelled_tois": 1166,
+    "dv_xml_files": 9067,
+    "dv_features": 18,
+    "kepler_gaia_matched_stars": 200662,
+    "kepler_labelled_hosts_streamed": 7954,
+    "kepler_planet_objects": 5843,
+    "kepler_transit_windows": 973182,
+    "kepler_pretraining_objects_excluding_tess_stars": {
+      "objects": 5749,
+      "confirmed_planets": 2130,
+      "false_positives": 3619,
+      "gaia_sources": 5080,
+      "note": "Kepler objects whose Gaia source also appears in the TESS data were removed before pretraining."
+    },
+    "curated_eclipse_like_nonplanets_in_training": 15,
+    "train_tfopwg_tois": {
+      "planets": 530,
+      "nonplanets": 109
+    }
+  },
+  "planet_classification": {
+    "rows": [
+      {
+        "model": "Kepler-transfer CNN + DV",
+        "cnn_weight": 1.0,
+        "val_auc": 0.9017,
+        "test_auc": 0.8749,
+        "test_ap": 0.9664,
+        "auc_ci": [
+          0.8051,
+          0.9313
+        ],
+        "ap_ci": [
+          0.9395,
+          0.9861
+        ]
+      },
+      {
+        "model": "FLAML (DV)",
+        "cnn_weight": 0.0,
+        "val_auc": 0.8855,
+        "test_auc": 0.925,
+        "test_ap": 0.9654,
+        "auc_ci": [
+          0.8514,
+          0.9738
+        ],
+        "ap_ci": [
+          0.9154,
+          0.9952
+        ]
+      },
+      {
+        "model": "AutoGluon (DV)",
+        "cnn_weight": 0.0,
+        "val_auc": 0.9017,
+        "test_auc": 0.9307,
+        "test_ap": 0.9824,
+        "auc_ci": [
+          0.8808,
+          0.97
+        ],
+        "ap_ci": [
+          0.9666,
+          0.9939
+        ]
+      },
+      {
+        "model": "CNN + FLAML blend",
+        "cnn_weight": 0.55,
+        "val_auc": 0.9256,
+        "test_auc": 0.9297,
+        "test_ap": 0.9725,
+        "auc_ci": [
+          0.8602,
+          0.9762
+        ],
+        "ap_ci": [
+          0.9315,
+          0.9955
+        ]
+      },
+      {
+        "model": "CNN + AutoGluon blend (selected)",
+        "cnn_weight": 0.45,
+        "val_auc": 0.9299,
+        "test_auc": 0.9398,
+        "test_ap": 0.9843,
+        "auc_ci": [
+          0.8885,
+          0.9777
+        ],
+        "ap_ci": [
+          0.9675,
+          0.9956
+        ]
+      }
+    ],
+    "test_planet_share": 0.8142,
+    "paired_differences": [
+      {
+        "a": "CNN + AutoGluon blend (selected)",
+        "b": "Kepler-transfer CNN + DV",
+        "delta_roc_auc": 0.0649,
+        "delta_roc_auc_ci": [
+          0.0316,
+          0.103
+        ],
+        "p_auc_not_better": 0.0,
+        "delta_ap": 0.0179,
+        "delta_ap_ci": [
+          0.0076,
+          0.0311
+        ]
+      },
+      {
+        "a": "CNN + AutoGluon blend (selected)",
+        "b": "AutoGluon (DV)",
+        "delta_roc_auc": 0.0091,
+        "delta_roc_auc_ci": [
+          -0.0147,
+          0.0362
+        ],
+        "p_auc_not_better": 0.2606,
+        "delta_ap": 0.0019,
+        "delta_ap_ci": [
+          -0.0055,
+          0.0105
+        ]
+      },
+      {
+        "a": "CNN + FLAML blend",
+        "b": "Kepler-transfer CNN + DV",
+        "delta_roc_auc": 0.0549,
+        "delta_roc_auc_ci": [
+          0.0183,
+          0.0936
+        ],
+        "p_auc_not_better": 0.0004,
+        "delta_ap": 0.0061,
+        "delta_ap_ci": [
+          -0.0163,
+          0.0244
+        ]
+      },
+      {
+        "a": "CNN + FLAML blend",
+        "b": "FLAML (DV)",
+        "delta_roc_auc": 0.0047,
+        "delta_roc_auc_ci": [
+          -0.0191,
+          0.03
+        ],
+        "p_auc_not_better": 0.3582,
+        "delta_ap": 0.0071,
+        "delta_ap_ci": [
+          -0.0038,
+          0.0213
+        ]
+      },
+      {
+        "a": "AutoGluon (DV)",
+        "b": "Kepler-transfer CNN + DV",
+        "delta_roc_auc": 0.0559,
+        "delta_roc_auc_ci": [
+          0.0026,
+          0.111
+        ],
+        "p_auc_not_better": 0.0212,
+        "delta_ap": 0.016,
+        "delta_ap_ci": [
+          0.0004,
+          0.0349
+        ]
+      },
+      {
+        "a": "CNN + AutoGluon blend (selected)",
+        "b": "CNN + FLAML blend",
+        "delta_roc_auc": 0.0101,
+        "delta_roc_auc_ci": [
+          -0.0171,
+          0.0427
+        ],
+        "p_auc_not_better": 0.2552,
+        "delta_ap": 0.0118,
+        "delta_ap_ci": [
+          -0.0048,
+          0.0388
+        ]
+      }
+    ],
+    "top_n": [
+      {
+        "n": 10,
+        "planets": 10,
+        "false_positives": 0,
+        "precision": 1.0,
+        "random_expected_planets": 8.142076502732241
+      },
+      {
+        "n": 25,
+        "planets": 25,
+        "false_positives": 0,
+        "precision": 1.0,
+        "random_expected_planets": 20.3551912568306
+      },
+      {
+        "n": 50,
+        "planets": 50,
+        "false_positives": 0,
+        "precision": 1.0,
+        "random_expected_planets": 40.7103825136612
+      },
+      {
+        "n": 100,
+        "planets": 98,
+        "false_positives": 2,
+        "precision": 0.98,
+        "random_expected_planets": 81.4207650273224
+      },
+      {
+        "n": 150,
+        "planets": 143,
+        "false_positives": 7,
+        "precision": 0.9533333333333334,
+        "random_expected_planets": 122.1311475409836
+      }
+    ],
+    "first_false_positive_rank": 62,
+    "operating_points": [
+      {
+        "rule": "highest threshold with validation planet recall >= 95%",
+        "threshold_probability": 0.4825,
+        "test_tp": 145,
+        "test_fp": 11,
+        "test_fn": 4,
+        "test_tn": 23,
+        "test_recall": 0.9732,
+        "test_precision": 0.9295,
+        "test_false_positives_rejected": 0.6765
+      },
+      {
+        "rule": "highest threshold with validation planet recall >= 90%",
+        "threshold_probability": 0.6894,
+        "test_tp": 134,
+        "test_fp": 6,
+        "test_fn": 15,
+        "test_tn": 28,
+        "test_recall": 0.8993,
+        "test_precision": 0.9571,
+        "test_false_positives_rejected": 0.8235
+      },
+      {
+        "rule": "highest threshold with validation planet recall >= 80%",
+        "threshold_probability": 0.8823,
+        "test_tp": 119,
+        "test_fp": 3,
+        "test_fn": 30,
+        "test_tn": 31,
+        "test_recall": 0.7987,
+        "test_precision": 0.9754,
+        "test_false_positives_rejected": 0.9118
+      }
+    ],
+    "calibration": {
+      "method": "Platt, fitted on validation",
+      "test_brier": 0.0689,
+      "baseline_brier": 0.1515
+    }
+  },
+  "transit_detection": {
+    "test_windows": 13309,
+    "test_stars": 184,
+    "rows": [
+      {
+        "model": "TESS-only CNN",
+        "ap": 0.9559,
+        "auc": 0.9567,
+        "f1": 0.8817
+      },
+      {
+        "model": "Kepler-transfer CNN",
+        "ap": 0.9598,
+        "auc": 0.9597,
+        "f1": 0.8945
+      },
+      {
+        "model": "AutoGluon ensemble",
+        "ap": 0.9896,
+        "auc": 0.9907,
+        "f1": 0.9519
+      },
+      {
+        "model": "FLAML ensemble",
+        "ap": 0.9884,
+        "auc": 0.9894,
+        "f1": 0.9515
+      }
+    ]
+  },
+  "leakage_audit": {
+    "status": "PASS",
+    "checks_passed": 34
+  },
+  "exominer_benchmark": {
+    "pipeline": "NASA ExoMiner++ v2.2.0 (rev 87b64ac), planet-validation, RUWE unavailable",
+    "matched_signals": 182,
+    "nonplanets": 34,
+    "single_auc": 0.9406,
+    "ensemble_auc": 0.967,
+    "ensemble_auc_ci": [
+      0.9318,
+      0.9933
+    ],
+    "blend_auc": 0.9394,
+    "diff_vs_single": [
+      -0.0012,
+      -0.0432,
+      0.0464
+    ],
+    "diff_vs_ensemble": [
+      -0.0276,
+      -0.0785,
+      0.0168
+    ],
+    "first_fp_rank": {
+      "ensemble": 92,
+      "single": 44,
+      "blend": 61
+    },
+    "post_2024_planets_median": {
+      "blend_rank_score": 0.387,
+      "ensemble_score": 0.92,
+      "note": "10 planets alerted after 2024 January 31. Descriptive only: the v2.2.0 planet-validation models were trained in 2026 May (10-fold CV on SPOC 2-min TCEs, sectors 1-98, per models/planet_validation/model_info.txt in the container), so these are not signals unseen by ExoMiner++."
+    },
+    "exominer_training_data": "ExoMiner++ v2.2.0 (revision 87b64ac): planet-validation models trained 2026-05-26 by 10-fold cross-validation on SPOC 2-min TCEs from sectors 1-98 (container file models/planet_validation/model_info.txt); label snapshot not documented. Most dispositioned test signals were probably among its training labels."
+  },
+  "license": "CC BY 4.0",
+  "reproducibility_rerun": {
+    "date": "2026-10-18/2026-10-19",
+    "description": "Full pipeline rerun from the archived downloads with pinned software versions",
+    "headline_test_roc_auc_with_original_kepler_pretrained_weights": 0.9397947098302408,
+    "headline_identical_to_original": true,
+    "headline_test_roc_auc_with_repeated_gpu_pretraining": {
+      "roc_auc": 0.9318989340702725,
+      "ci95": [
+        0.8807033826332531,
+        0.9718956403899065
+      ],
+      "selected_cnn_weight": 0.55
+    },
+    "exominer_single_roc_auc_rerun": 0.9405802861685215,
+    "exominer_ensemble_roc_auc_rerun": 0.9664149443561207,
+    "exominer_first_false_positive_rank_rerun": {
+      "single": 43,
+      "ensemble": 90
+    },
+    "note": "ExoMiner++ retrieves its inputs from MAST at run time, so its per-signal scores differ slightly between runs (median change 0.0001). Figure 1 and figure1_data.csv use the original run."
+  }
+}
