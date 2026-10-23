@@ -53,4 +53,4 @@ Note: the two IPAC DOIs (NEA4, ExoFOP5) resolve through doi.org to `catcopy.ipac
 
 Released under **CC BY 4.0**: you may share and adapt the material, including commercially, provided you give appropriate credit. Please cite the Research Note above (DOI to be added on publication).
 
-Contact: Lampros Sp. Mouselimis, Monopteryx, Paramythia, Greece · mouselimislampros@monopteryx.com · ORCID [0000-0002-8024-1546](https://orcid.org/0000-0002-8024-1546)
+Contact: Lampros Sp. Mouselimis, Monopteryx · [mouselimislampros@monopteryx.com](mailto:mouselimislampros@monopteryx.com) · ORCID [0000-0002-8024-1546](https://orcid.org/0000-0002-8024-1546)
