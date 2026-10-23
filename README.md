@@ -47,6 +47,8 @@ Dataset DOIs (as cited in the Research Note):
 - Kepler Objects of Interest Cumulative Table, NASA Exoplanet Archive: [10.26133/NEA4](https://doi.org/10.26133/NEA4)
 - Exoplanet Follow-up Observing Program (ExoFOP): [10.26134/ExoFOP5](https://doi.org/10.26134/ExoFOP5)
 
+Note: the two IPAC DOIs (NEA4, ExoFOP5) resolve through doi.org to `catcopy.ipac.caltech.edu`, which was unreachable on 2026-10-23. The same DOI records are also at https://www.ipac.caltech.edu/doi/10.26133/NEA4 and https://www.ipac.caltech.edu/doi/10.26134/ExoFOP5.
+
 ## License and citation
 
 Released under **CC BY 4.0**: you may share and adapt the material, including commercially, provided you give appropriate credit. Please cite the Research Note above (DOI to be added on publication).
